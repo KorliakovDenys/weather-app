@@ -1,12 +1,10 @@
 export class Request {
     #baseUrl;
     #path;
-    #queryParams;
 
-    constructor(baseUrl, defaultPath) {
+    constructor(baseUrl, defaultPath = '') {
         this.#baseUrl = baseUrl;
         this.#path = defaultPath;
-        this.#queryParams = new URLSearchParams();
     }
 
     setPath(newPath){
@@ -38,17 +36,17 @@ export class Request {
     }
 
     async #fetch(parameter, method, headers, body) {
-        const queryString = `${this.#baseUrl}${this.#path}?${parameter?.toString()}`;
-        console.log(queryString);
+        try{
+            let queryString = `${this.#baseUrl}${this.#path?? ''}?${parameter}`;
+            const response = await fetch(queryString, {
+                method: method,
+                headers: headers,
+                body: body
+            });
 
-        const response = await fetch(queryString, {
-            method: method,
-            headers: headers,
-            body: body
-        });
-
-        if(response.ok) return JSON.parse(await response.text());
-
-        throw new Error('User not found (404).')
+            if(response.ok) return JSON.parse(await response.text());
+        }catch (error){
+            console.log(error);
+        }
     }
 }

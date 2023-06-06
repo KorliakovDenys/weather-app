@@ -9,15 +9,21 @@ import {createStore} from "redux";
 
 
 const initialState = {
-    activeTab: 'Today'
+    activeTab: 'Today',
+    weatherData: null
 };
 
-const reducer = (state = initialState, action) =>{
-    switch (action.type){
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
         case 'SET_ACTIVE_TAB':
-            return{
+            return {
                 ...state,
                 activeTab: action.payload
+            };
+        case 'SET_WEATHER_DATA':
+            return {
+                ...state,
+                weatherData: action.payload
             };
         default:
             return state
