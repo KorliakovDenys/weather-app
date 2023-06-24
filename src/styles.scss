@@ -1,4 +1,4 @@
-$boldTextFontColor: #0095a0;
+$turquoiseColor: #0095a0;
 $darkGrayColor: #404040;
 $lightGrayColor: #bbb;
 $veryLightGrayColor: #e4e4e4;
@@ -38,27 +38,27 @@ header > form {
 }
 
 h1, h3, h4, h5 {
-  color: $boldTextFontColor;
+  color: $turquoiseColor;
 }
 
-h1{
+h1 {
   font-size: $giantFontSize;
 }
 
-h2{
+h2 {
   font-size: $largeFontSize;
   color: $smokeWhiteColor;
 }
 
-h3{
+h3 {
   font-size: $normalFontSize;
 }
 
-h4{
+h4 {
   font-size: $smallFontSize;
 }
 
-h5{
+h5 {
   font-size: $smallestFontSize;
 }
 
@@ -90,6 +90,44 @@ form > button[type=submit] {
 svg, img {
   width: 100%;
   height: 100%;
+  display: block;
+}
+
+img{
+  background-color: $turquoiseColor;
+  border-radius: 50%;
+  &.small{
+    padding: 3px;
+  }
+  &.middle{
+    padding: 6px;
+  }
+  &.large{
+    padding: 9px;
+  }
+  &.xLarge{
+    padding: 15px;
+  }
+}
+
+.small {
+  width: 30px;
+  height: 30px;
+}
+
+.middle {
+  width: 40px;
+  height: 40px;
+}
+
+.large {
+  width: 60px;
+  height: 60px;
+}
+
+.xLarge {
+  width: 100px;
+  height: 100px;
 }
 
 nav {
@@ -111,7 +149,6 @@ li {
   align-items: center;
   justify-content: center;
   border-collapse: collapse;
-
 }
 
 .navItem {
@@ -119,8 +156,9 @@ li {
   color: white;
   cursor: pointer;
   border-width: 0;
-  &_selected{
-    border-bottom: solid 4px $boldTextFontColor;
+
+  &_selected {
+    border-bottom: solid 4px $turquoiseColor;
   }
 }
 
@@ -150,26 +188,6 @@ li {
   background: $smokeWhiteColor;
 }
 
-.small{
-  width: 24px;
-  height: 24px;
-}
-
-.middle {
-  width: 48px;
-  height: 48px;
-}
-
-.large {
-  width: 64px;
-  height: 64px;
-}
-
-.xLarge {
-  width: 96px;
-  height: 96px;
-}
-
 span {
   display: inline-block;
   font-size: $smallestFontSize;
@@ -178,21 +196,21 @@ span {
   white-space: nowrap;
 }
 
-.grid{
+.grid {
   display: grid;
   gap: 6px;
   grid-template-columns: auto auto;
   padding: 12px;
 }
 
-.veryLightGrayChildDiv > div{
+.veryLightGrayChildDiv > div {
   background: $veryLightGrayColor;
 }
 
-.center{
+.center {
   align-items: center;
 }
 
-.stretchChild > div{
+.stretchChild > div {
   width: 100%;
 }

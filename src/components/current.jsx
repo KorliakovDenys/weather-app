@@ -1,5 +1,4 @@
 import styles from "../styles.scss";
-import sunImage from "../assets/images/free-icon-sun-rays-3385807.png";
 import React from "react";
 import WeatherDataProcessor from "../js/weatherDataProcessor";
 
@@ -12,7 +11,7 @@ export const Current = (props) => {
             <h5>{new Date().toLocaleDateString()}</h5>
         </div>
         <div className={styles.hStack} style={{justifyContent: "space-around"}}>
-            <div className={styles.vStack}>
+            <div className={`${styles.vStack} ${styles.center}`}>
                 <img src={weatherDP.getWeatherIcon(props.current.weather[0].icon)} alt="" className={styles.large}/>
                 <span className={styles.center}>{props.current.weather[0].main}</span>
             </div>
@@ -23,11 +22,17 @@ export const Current = (props) => {
             <div className={styles.vStack}>
                 <div className={styles.hStack}>
                     <span>Sunrise:</span>
-                    <span>{new Date(props.current.sunrise * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>
+                    <span>{new Date(props.current.sunrise * 1000).toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    })}</span>
                 </div>
                 <div className={styles.hStack}>
                     <span>Sunset:</span>
-                    <span>{new Date(props.current.sunset * 1000).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}</span>
+                    <span>{new Date(props.current.sunset * 1000).toLocaleTimeString([], {
+                        hour: 'numeric',
+                        minute: '2-digit'
+                    })}</span>
                 </div>
                 <div className={styles.hStack}>
                     <span>Duration:</span>

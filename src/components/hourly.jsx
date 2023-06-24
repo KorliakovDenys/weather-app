@@ -4,10 +4,10 @@ import React from "react";
 
 export const Hourly = (props) => {
     let components = [];
-
     let time = new Date();
+
     for (let i = 0; i < 6; i++) {
-        components.push(new HourlyWeather({...props.hourly[i], hours: time.getHours()}))
+        components.push(<HourlyWeather key={i} {...props.hourly[i]} hours={time.getHours()}/>)
         time.setHours(time.getHours() + 1);
     }
 

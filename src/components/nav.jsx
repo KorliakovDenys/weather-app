@@ -3,6 +3,7 @@ import React from "react";
 import {connect} from "react-redux";
 import '../js/navState'
 import {mapDispatchToProps, mapStateToProps} from "../js/navState";
+
 const Nav = (props) => {
     return <nav>
         <ul>

@@ -8,7 +8,6 @@ import FiveDay from "./five-day";
 import {connect} from "react-redux";
 import {mapStateToProps, mapDispatchToProps} from "../js/navState";
 import WeatherDataProcessor from "../js/weatherDataProcessor"
-import {Request} from "../js/request";
 
 class Content extends React.Component {
     constructor(props) {
@@ -20,8 +19,6 @@ class Content extends React.Component {
 
         this.weatherDataProcessor.getCurrentGeoLocation().then(data => this.props.setWeatherData(data));
     }
-
-
 
     render() {
         console.log(this.props);
@@ -38,8 +35,14 @@ class Content extends React.Component {
             case 'FiveDay': {
                 return <div className={styles.wrapper}>
                     <FiveDay current={this.props.weatherData.hourly}/>
-                    <Hourly/>
+                    <Hourly hourly={this.props.weatherData.hourly}/>
                 </div>
+            }
+            case 'Loading': {
+                return <div></div>
+            }
+            default:{
+                return <div>Not found.</div>
             }
         }
     }
