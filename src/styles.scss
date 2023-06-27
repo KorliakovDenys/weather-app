@@ -8,7 +8,8 @@ $smallestFontSize: 1rem;
 $smallFontSize: 1.1rem;
 $normalFontSize: 1.2rem;
 $largeFontSize: 1.3rem;
-$giantFontSize: 2rem;
+$xLargeFontSize: 2rem;
+$giantFontSize: 6rem;
 
 * {
   margin: 0;
@@ -24,10 +25,9 @@ body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
-  display: flow;
 }
 
-header > form {
+.searchForm {
   background: $veryLightGrayColor;
   height: 72px;
   display: flex;
@@ -37,12 +37,37 @@ header > form {
   position: relative;
 }
 
+.searchForm > input[type=text] {
+  height: 24px;
+  width: 196px;
+  outline: 0;
+  border-radius: 0;
+  border-width: 1px;
+  border-color: $lightGrayColor;
+  padding: 0 4px;
+}
+
+.searchForm > input[type=text]:focus {
+  border-color: $darkGrayColor;
+}
+
+.searchForm > button {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  right: 25px;
+  background: white;
+  border: 0 transparent;
+  padding: 2px;
+  cursor: pointer;
+}
+
 h1, h3, h4, h5 {
   color: $turquoiseColor;
 }
 
 h1 {
-  font-size: $giantFontSize;
+  font-size: $xLargeFontSize;
 }
 
 h2 {
@@ -62,50 +87,29 @@ h5 {
   font-size: $smallestFontSize;
 }
 
-form > input[type=text] {
-  height: 24px;
-  width: 196px;
-  outline: 0;
-  border-radius: 0;
-  border-width: 1px;
-  border-color: $lightGrayColor;
-  padding: 0 4px;
-}
-
-form > input[type=text]:focus {
-  border-color: $darkGrayColor;
-}
-
-form > button[type=submit] {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  right: 25px;
-  background: white;
-  border: 0 transparent;
-  padding: 2px;
-  cursor: pointer;
-}
-
 svg, img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-img{
+img {
   background-color: $turquoiseColor;
   border-radius: 50%;
-  &.small{
+
+  &.small {
     padding: 3px;
   }
-  &.middle{
+
+  &.middle {
     padding: 6px;
   }
-  &.large{
+
+  &.large {
     padding: 9px;
   }
-  &.xLarge{
+
+  &.xLarge {
     padding: 15px;
   }
 }
@@ -180,7 +184,7 @@ li {
 .hStack {
   align-items: center;
   gap: 12px;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .vStack {
@@ -194,6 +198,15 @@ span {
   color: $darkGrayColor;
   padding: 8px;
   white-space: nowrap;
+}
+
+.fontSize{
+  &_large{
+    font-size: $largeFontSize;
+  }
+  &_xLarge{
+    font-size: $giantFontSize;
+  }
 }
 
 .grid {
@@ -213,4 +226,31 @@ span {
 
 .stretchChild > div {
   width: 100%;
+}
+
+.loader {
+  border: 5px solid $turquoiseColor;
+  &.middle{
+    border-width: 6px;
+  }
+  &.large{
+    border-width: 7px;
+  }
+  &.xLarge{
+    border-width: 8px;
+  }
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

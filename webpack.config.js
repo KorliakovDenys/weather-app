@@ -1,11 +1,11 @@
 const webpack = require("webpack");
 const path = require("path");
+const fs = require("fs")
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const production = process.env.NODE_ENV === 'production';
-
 
 module.exports = {
     entry: { weatherApp: path.resolve(__dirname, "./src/index.js") },
@@ -68,6 +68,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin({
             filename: production ? '[name].[contenthash].css' : '[name].css',
+        }),
+        new webpack.DefinePlugin({
+            APP_CONFIG: fs.readFileSync("config.json", 'utf8')
         }),
     ],
     devServer: {

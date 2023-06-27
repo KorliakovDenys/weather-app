@@ -1,13 +1,21 @@
-import styles from "../styles.scss";
-import {HourlyWeather} from "./hourly-weather";
+import styles from "../../../styles.scss";
+import {HourlySegment} from "./segments/hourly-segment";
 import React from "react";
 
-export const Hourly = (props) => {
+const Hourly = (props) => {
+    const hourReportLimit = 6
     let components = [];
     let time = new Date();
 
     for (let i = 0; i < 6; i++) {
-        components.push(<HourlyWeather key={i} {...props.hourly[i]} hours={time.getHours()}/>)
+        components.push(<HourlySegment
+            key={`hourly-${i}`}
+            data={{
+                ...props.data[i],
+                hours: time.getHours()
+            }}
+        />);
+
         time.setHours(time.getHours() + 1);
     }
 
@@ -29,3 +37,5 @@ export const Hourly = (props) => {
         </div>
     </div>;
 }
+
+export default Hourly;
