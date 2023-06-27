@@ -8,12 +8,19 @@ export default class WeatherAPI {
 
     #weatherRequest;
     #weatherLocationRequest;
+    #nearbyWeatherRequest;
     #locationRequest;
     #currentLocation;
 
     constructor() {
         this.#weatherRequest = new Request(APP_CONFIG.weatherApiUrl, APP_CONFIG.weatherApiPath);
         this.#weatherRequest.setParams({
+            appid: APP_CONFIG.weatherApiKey,
+            units: 'metrics'
+        });
+
+        this.#nearbyWeatherRequest = new Request(APP_CONFIG.weatherApiUrl, APP_CONFIG.nearbyWeatherApiPath);
+        this.#nearbyWeatherRequest.setParams({
             appid: APP_CONFIG.weatherApiKey,
             units: 'metrics'
         });
@@ -43,8 +50,10 @@ export default class WeatherAPI {
         if (this.#currentLocationIsEmpty()) {
             await this.#retrieveCurrentLocation();
         }
+        const weatherData = await this.#weatherRequest.setParams(this.#currentLocation).get();
+        const nearby = await this.#nearbyWeatherRequest.setParams(this.#currentLocation).get();
 
-        return await this.#weatherRequest.setParams(this.#currentLocation).get();
+        return {...weatherData, nearby};
     }
 
     async getCityLocation(city) {
