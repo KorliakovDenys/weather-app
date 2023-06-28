@@ -16,9 +16,10 @@ To run this application locally, follow these steps:
 1. Clone the repository: `git clone https://github.com/KorliakovDenys/weather-app`
 2. Navigate to the project directory: `cd weather-app`
 3. Install dependencies: `npm install`
-4. Build the project: `npm run build`
-5. Start the development server: `npm start`
-6. Open your browser and visit: `http://localhost:9000`
+4. Сreate a `config.json` file in root directory following the example of the `config.example.json` file
+5. Build the project: `npm run build`
+6. Start the development server: `npm start`
+7. Open your browser and visit: `http://localhost:9000`
 
 ## Usage
 1. Enter a location or city name in the search bar to retrieve the weather information.
