@@ -16,6 +16,11 @@ const reducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 weatherData: action.payload
             };
+        case ACTION_TYPES.ACTIVE_DAY_BLOCK:
+            return {
+                ...state,
+                activeDayBlock: action.payload
+            };
         case ACTION_TYPES.CONTENT_STATUS:
             return {
                 ...state,

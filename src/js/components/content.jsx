@@ -10,6 +10,7 @@ import {mapStateToProps, mapDispatchToProps} from "../app/state";
 import {CONTENT_STATES, TABS} from "../constants"
 import Loader from "./reports/loader";
 import Error from "./reports/error";
+import Daily from "./reports/daily";
 
 const Content = (props) => {
     const {activeTab, weatherData, contentStatus} = props;
@@ -28,8 +29,8 @@ const Content = (props) => {
                         </div>
                     case TABS.FIVE_DAY: {
                         return <div className={styles.wrapper}>
-                            <FiveDay data={weatherData.hourly}/>
-                            <Hourly data={weatherData.hourly}/>
+                            <FiveDay/>
+                            <Daily/>
                         </div>
                     }
                     default:

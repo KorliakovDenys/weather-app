@@ -166,6 +166,16 @@ li {
   }
 }
 
+.whiteSmokeBackground{
+  background: $smokeWhiteColor;
+}
+
+.dailyBlock {
+  &_selected{
+    background: $smokeWhiteColor !important;
+  }
+}
+
 .wrapper, .hStack, .vStack, .contentHeader {
   display: flex;
   justify-content: space-between;
@@ -189,7 +199,6 @@ li {
 
 .vStack {
   padding: 12px;
-  background: $smokeWhiteColor;
 }
 
 span {

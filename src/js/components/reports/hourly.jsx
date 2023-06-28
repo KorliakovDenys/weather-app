@@ -19,7 +19,7 @@ const Hourly = (props) => {
         time.setHours(time.getHours() + 1);
     }
 
-    return <div className={styles.vStack}>
+    return <div className={`${styles.vStack} ${styles.whiteSmokeBackground}`}>
         <div className={styles.contentHeader}>
             <h4>HOURLY</h4>
         </div>
@@ -29,7 +29,7 @@ const Hourly = (props) => {
                 <div className={styles.large}></div>
 
                 <span>Forecast</span>
-                <span>Temp (C&#176;)</span>
+                <span>Temp</span>
                 <span>Real Feel</span>
                 <span>Wind (km/h)</span>
             </div>

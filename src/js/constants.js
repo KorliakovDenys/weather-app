@@ -3,6 +3,7 @@ export const APP_HEADER_TEXT = 'Weather App';
 export const ACTION_TYPES = {
     ACTIVE_TAB: "SET_ACTIVE_TAB",
     WEATHER_DATA: "SET_WEATHER_DATA",
+    ACTIVE_DAY_BLOCK: "ACTIVE_DAY_BLOCK",
     CONTENT_STATUS: "SET_CONTENT_STATUS"
 };
 
@@ -10,6 +11,14 @@ export const TABS = {
     TODAY: "Today",
     FIVE_DAY: "FiveDay",
 };
+
+export const DAY_BLOCKS = {
+    FIRST: 0,
+    SECOND: 1,
+    THIRD: 2,
+    FOURTH: 3,
+    FIFTH: 4,
+}
 
 export const TABS_TEXT = {
     [TABS.TODAY]: "Today",
@@ -24,6 +33,7 @@ export const CONTENT_STATES = {
 
 export const INITIAL_STATE = {
     activeTab: TABS.TODAY,
+    activeDayBlock: DAY_BLOCKS.FIRST,
     weatherData: null,
     contentStatus: CONTENT_STATES.LOADING
 };

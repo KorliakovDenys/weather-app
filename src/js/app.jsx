@@ -36,6 +36,8 @@ class App extends React.Component {
     async #updateWeatherData(location) {
         const data = await this.#weatherAPI.getDataByLocation(location);
 
+        console.log(data);
+
         if(_.isEmpty(data)){
             this.props.setContentStatus(CONTENT_STATES.ERROR);
             return;

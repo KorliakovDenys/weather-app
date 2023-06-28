@@ -1,0 +1,9 @@
+{
+  "ipInfoLocationToken": "{ipInfoToken}",
+  "ipInfoLocationUrl": "https://ipinfo.io/",
+  "weatherApiGeoPath": "/geo/1.0/direct",
+  "weatherApiKey": "{openWeatherApiToken}",
+  "weatherApiPath": "/data/3.0/onecall",
+  "nearbyWeatherApiPath": "/data/2.5/find",
+  "weatherApiUrl": "https://api.openweathermap.org"
+}

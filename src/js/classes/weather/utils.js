@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-export default class WeatherUtils{
+export default class WeatherUtils {
     static ICON_PLACEHOLDER = '{{icon-code}}';
     static WEATHER_ICON_URL_PLACEHOLDER = `https://openweathermap.org/img/wn/${WeatherUtils.ICON_PLACEHOLDER}.png`;
 
@@ -21,7 +21,7 @@ export default class WeatherUtils{
     }
 
     static convertToCelsius(kelvins) {
-        return Math.round(kelvins - 273.15);
+        return Math.round(kelvins - 273.15).toString() + '\u00B0C';
     }
 
     static convertWindSpeed(windSpeed) {
@@ -34,9 +34,13 @@ export default class WeatherUtils{
         return directions[index];
     }
 
+    static convertHectoPascalToMillimetersOfMercury(hPa){
+        return (hPa * 0.75006).toFixed(2);
+    }
+
     static calculateDayDuration(sunriseTimestamp, sunsetTimestamp) {
-        const sunrise = new Date(sunriseTimestamp * 1000);
-        const sunset = new Date(sunsetTimestamp * 1000);
+        const sunrise = this.getDate(sunriseTimestamp);
+        const sunset = this.getDate(sunsetTimestamp);
 
         const durationInMillis = sunset.getTime() - sunrise.getTime();
 
@@ -53,4 +57,52 @@ export default class WeatherUtils{
             iconCode
         );
     }
+
+    static getDate(dateTimestamp) {
+        return new Date(dateTimestamp * 1000);
+    }
+
+    static getDayOfWeek(date) {
+        if (this.isToday(date)) return "TODAY";
+
+        const dayNumber = date.getDay();
+
+        const daysOfWeek = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+
+        return daysOfWeek[dayNumber];
+    }
+
+    static getMonthName(date) {
+        const monthNumber = date.getMonth();
+
+        if (0 > monthNumber > 11) return "";
+
+        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
+        return months[monthNumber];
+    }
+
+    static getDayOfMonth(date) {
+        return date.getDate().toString().padStart(2, '0');
+    }
+
+    static isToday(date) {
+        const now = new Date;
+
+        return (
+            date.getDate() === now.getDate() &&
+            date.getMonth() === now.getMonth() &&
+            date.getFullYear() === now.getFullYear()
+        );
+    }
+
+    static getFormattedTime = (date) => {
+        return date.toLocaleTimeString(
+            [],
+            {
+                hour: 'numeric',
+                minute: '2-digit'
+            }
+        );
+    };
 }

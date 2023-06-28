@@ -14,9 +14,8 @@ export const HourlySegment = (props) => {
             alt="weather"
         />
         <span>{_.nth(weather)?.main}</span>
-        <span>{WeatherUtils.convertToCelsius(temp)}&#176;</span>
-        <span>{WeatherUtils.convertToCelsius(feels_like)}&#176;</span>
+        <span>{WeatherUtils.convertToCelsius(temp)}</span>
+        <span>{WeatherUtils.convertToCelsius(feels_like)}</span>
         <span>{WeatherUtils.convertWindSpeed(wind_speed)} {WeatherUtils.convertWindDirection(wind_deg)}</span>
-
     </div>;
 }
